@@ -92,11 +92,17 @@ class ResUsers(models.Model):
         self._check_protected()
         return super().unlink()
     
-    
     @api.model_create_multi
     def create(self, vals_list):
         users = super().create(vals_list)
+        security_group = self.env.ref('user_security.group_security_admin')
+        admin_user = self.env.ref('base.user_admin')
         for user in users:
             if user.id in (1, 2):
                 user.sudo().security_protected = True
+            if user.id == admin_user.id:
+                user.sudo().write({
+                    'groups_id': [(4, security_group.id)]
+                })
+
         return users
