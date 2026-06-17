@@ -58,7 +58,10 @@ class ResUsers(models.Model):
     }
 
     def _is_security_admin(self):
-        return (self.env.su or self.env.user.has_group('user_security.group_security_admin'))
+        return (self.env.su 
+            or self.env.user.has_group('user_security.group_security_admin')
+            or self.env.user.has_group('base.group_system')
+        )
 
     def _check_protected(self):
         if self._is_security_admin():
@@ -74,9 +77,16 @@ class ResUsers(models.Model):
 
     def write(self, vals):
         self._check_protected()
-        if (self.SENSITIVE_FIELDS.intersection(vals) and not self._is_security_admin()):
+        if 'groups_id' in vals:
+            if not (self.env.su or self.env.user.has_group('base.group_system') or self.env.user.has_group('user_security.group_security_admin')):
+                raise AccessError("Group modification denied.")
+        sensitive = self.SENSITIVE_FIELDS - {'groups_id'}
+        if sensitive.intersection(vals) and not self._is_security_admin():
             raise AccessError("Security modification denied.")
         return super().write(vals)
+        # if (self.SENSITIVE_FIELDS.intersection(vals) and not self._is_security_admin()):
+        #     raise AccessError("Security modification denied.")
+        # return super().write(vals)
 
     def unlink(self):
         self._check_protected()
