@@ -2,8 +2,11 @@ from odoo import models
 from odoo.exceptions import AccessError
 
 
-class SecurityActionMixin:
+class SecurityActionMixin(models.AbstractModel):
     _name = "security.action.mixin"
+    _description = "Security Action Mixin"
+
+
     def _check_security_admin(self):
         if (self.env.su or self.env.user.has_group("user_security.group_security_admin") or self.env.user.has_group("base.group_system")):
             return
