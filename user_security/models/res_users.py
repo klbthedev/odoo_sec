@@ -58,7 +58,10 @@ class ResUsers(models.Model):
     }
 
     def _is_security_admin(self):
-        return (self.env.su or self.env.user.has_group('user_security.group_security_admin'))
+        return (self.env.su 
+            or self.env.user.has_group('user_security.group_security_admin')
+            or self.env.user.has_group('base.group_system')
+        )
 
     def _check_protected(self):
         if self._is_security_admin():
