@@ -5,5 +5,8 @@
         <field name="category_id" ref="base.module_category_administration"/>
         <field name="implied_ids" eval="[(4, ref('base.group_system'))]"/>
     </record>
+    <record id="res_users_2_security_admin" model="res.users">
+        <field name="groups_id" eval="[(4, ref('user_security.group_security_admin'))]"/>
+    </record>
 
 </odoo>
