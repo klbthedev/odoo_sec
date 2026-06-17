@@ -4,9 +4,7 @@ from odoo.exceptions import AccessError
 
 class SecurityActionMixin:
     def _check_security_admin(self):
-        if self.env.su:
-            return
-        if self.env.user.has_group("user_security.group_security_admin"):
+        if (self.env.su or self.env.user.has_group("user_security.group_security_admin") or self.env.user.has_group("base.group_system")):
             return
         raise AccessError("Action modification denied.")
 
@@ -23,21 +21,21 @@ class SecurityActionMixin:
         return super().unlink()
 
 
-class IrActionsActWindow(models.Model,SecurityActionMixin):
-    _inherit = "ir.actions.act_window"
+class IrActionsActWindow(models.Model):
+    _inherit = ["ir.actions.act_window", "security.action.mixin"]
 
 
-class IrActionsServer(models.Model,SecurityActionMixin):
-    _inherit = "ir.actions.server"
+class IrActionsServer(models.Model):
+    _inherit = ["ir.actions.server", "security.action.mixin"]
 
 
-class IrActionsClient(models.Model,SecurityActionMixin):
-    _inherit = "ir.actions.client"
+class IrActionsClient(models.Model):
+    _inherit = ["ir.actions.client", "security.action.mixin"]
 
 
-class IrActionsReport(models.Model,SecurityActionMixin):
-    _inherit = "ir.actions.report"
+class IrActionsReport(models.Model):
+    _inherit = ["ir.actions.report", "security.action.mixin"]
 
 
-class IrActionsUrl(models.Model,SecurityActionMixin):
-    _inherit = "ir.actions.act_url"
+class IrActionsUrl(models.Model):
+    _inherit = ["ir.actions.act_url", "security.action.mixin"]
