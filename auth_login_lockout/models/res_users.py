@@ -178,7 +178,7 @@ class ResUsers(models.Model):
             """,
             [self.id],
         )
-        self.invalidate_cache()
+        # self.invalidate_cache()
         attempts = self.failed_login_attempts + 1
         values = {
             "failed_login_attempts": attempts,
