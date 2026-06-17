@@ -31,9 +31,14 @@
             <t t-set="disable_database_manager" t-value="True"/>
         </xpath>
     </template>
-    <template id="hide_reset_password_link" inherit_id="auth_signup.login" name="Hide Reset Password Link">
-        <xpath expr="//a[@t-if='signup_enabled or reset_password_enabled']" position="replace">
-            <div class="d-none"></div>
+    <!-- <template id="reset_password_extend" inherit_id="auth_signup.action_reset_password" name="Disable Password Reset">
+        <xpath expr="//t[@t-call='web.login_layout']" position="inside">
+            <t t-set="reset_password_enabled" t-value="True"/>
         </xpath>
-    </template>
+    </template> 
+    <template id="signup_enabled_extend" inherit_id="auth_signup.action_reset_password" name="Disable Signup Enabled">
+        <xpath expr="//t[@t-call='web.login_layout']" position="inside">
+            <t t-set="signup_enabled" t-value="True"/>
+        </xpath>
+    </template>-->
 </odoo>
