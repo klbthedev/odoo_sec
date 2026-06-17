@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="res_config_settings_view_form_lockout" model="ir.ui.view">
+        <field name="name">res.config.settings.login.lockout</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Security" name="auth_login_lockout">
+                    <block title="Login Lockout">
+                        <setting string="Maximum Failed Login Attempts">
+                            <field name="login_lockout_max_attempts"/>
+                        </setting>
+                        <setting string="Lock Duration Minutes">
+                            <field name="login_lockout_duration"/>
+                        </setting>
+                        <setting string="Exclude Internal Administrators">
+                            <field name="login_lockout_exclude_admins"/>
+                        </setting>
+                        <setting string="Max Attempts allowed before being blocked">
+                            <field name="login_lockout_max_lockouts"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
