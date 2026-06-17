@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="view_users_form_lockout" model="ir.ui.view">
+        <field name="name">res.users.form.login.lockout</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Security" groups="base.group_system">
+                    <group>
+                        <field name="security_status" widget="badge" readonly="1"/>
+                        <field name="failed_login_attempts" readonly="1"/>
+                        <field name="lockout_count" readonly="1"/>
+                        <field name="login_locked_until" readonly="1"/>
+                        <field name="is_login_locked" readonly="1"/>
+                        <field name="is_permanently_blocked" readonly="1"/>
+                    </group>
+
+                    <group>
+                        <button
+                            name="action_unblock_user"
+                            type="object"
+                            string="Unblock User"
+                            class="btn-primary"
+                            invisible="not is_permanently_blocked"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

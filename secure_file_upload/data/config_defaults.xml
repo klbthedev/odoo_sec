@@ -1,0 +1,6 @@
+<odoo>
+    <record id="secure_upload_defaults" model="ir.config_parameter">
+        <field name="key">secure_upload.max_size</field>
+        <field name="value">10485760</field>
+    </record>
+</odoo>

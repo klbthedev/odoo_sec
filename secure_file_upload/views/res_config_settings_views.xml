@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="res_config_settings_view_form_upload" model="ir.ui.view">
+        <field name="name">res.config.settings.upload.security</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="File Upload Security" name="file_upload_security">
+                    <block title="File Upload Security">
+                        <setting string="Maximum Upload Size">
+                            <div class="text-muted">
+                                <strong>File Size Units Guide:</strong><br/>
+                                    1 KB = 1 × 1024 = 1,024 bytes<br/>
+                                    1 MB = 1 × 1024 × 1024 = 1,048,576 bytes<br/>
+                                    1 GB = 1 × 1024 × 1024 × 1024 = 1,073,741,824 bytes<br/><br/>
+                                <em>All upload size limits are stored in bytes internally.</em>
+                                <field name="max_upload_size"/>
+                            </div>
+                        </setting>
+                        <setting string="Allowed File Extensions">
+                            <field name="allowed_extensions"/>
+                        </setting>
+                        <setting string="Enable Rate Limiting">
+                            <field name="enable_rate_limit"/>
+                        </setting>
+                        <setting string="Maximum Uploads Per Minute">
+                            <field name="max_uploads_per_minute"/>
+                        </setting>
+                        <setting string="Maximum Upload Size Per Hour">
+                            <field name="max_upload_size_per_hour"/>
+                        </setting>
+                        <setting string="Reject Suspicious Uploads">
+                            <field name="reject_suspicious"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>
