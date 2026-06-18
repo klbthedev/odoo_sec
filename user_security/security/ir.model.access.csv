@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ir_rule_security_admin,ir.rule security admin,base.model_ir_rule,user_security.group_security_admin,1,1,1,1
+access_ir_model_access_security_admin,ir.model.access security admin,base.model_ir_model_access,user_security.group_security_admin,1,1,1,1
+access_res_groups_security_admin,res.groups security admin,base.model_res_groups,user_security.group_security_admin,1,1,1,1
+access_ir_ui_menu_security_admin,ir.ui.menu security admin,base.model_ir_ui_menu,user_security.group_security_admin,1,1,1,1
+access_ir_actions_act_window_security_admin,act window security admin,base.model_ir_actions_act_window,user_security.group_security_admin,1,1,1,1
+access_ir_actions_server_security_admin,server action security admin,base.model_ir_actions_server,user_security.group_security_admin,1,1,1,1
+access_ir_actions_client_security_admin,client action security admin,base.model_ir_actions_client,user_security.group_security_admin,1,1,1,1
+access_ir_actions_report_security_admin,report action security admin,base.model_ir_actions_report,user_security.group_security_admin,1,1,1,1
+access_ir_actions_url_security_admin,url action security admin,base.model_ir_actions_act_url,user_security.group_security_admin,1,1,1,1
+access_ir_ui_view_security_admin,view security admin,base.model_ir_ui_view,user_security.group_security_admin,1,1,1,1
+access_ir_model_fields_security_admin,fields security admin,base.model_ir_model_fields,user_security.group_security_admin,1,1,1,1
+access_ir_cron_security_admin,cron security admin,base.model_ir_cron,user_security.group_security_admin,1,1,1,1
+access_ir_config_parameter_security_admin,config security admin,base.model_ir_config_parameter,user_security.group_security_admin,1,1,1,1
+access_ir_module_module_security_admin,module security admin,base.model_ir_module_module,user_security.group_security_admin,1,1,1,1
