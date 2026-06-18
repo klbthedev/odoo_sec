@@ -12,7 +12,7 @@ class ResConfigSettings(models.TransientModel):
     allowed_extensions = fields.Char(
         string="Allowed Extensions",
         config_parameter="secure_upload.allowed_ext",
-        default="jpg,jpeg,png,pdf,webp,pem,key",
+        default="jpg,jpeg,png,pdf,webp,pem,key,json",
     )
 
     enable_rate_limit = fields.Boolean(
