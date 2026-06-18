@@ -6,7 +6,8 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet/notebook" position="inside">
                 <page string="Security Admin Access" groups="base.group_system">
-                    <field name="security_protected" groups="user_security.group_security_admin"/>
+                    <!-- <field name="security_protected" groups="user_security.group_security_admin"/> -->
+                    <field name="security_protected" />
                 </page>
             </xpath>
         </field>
