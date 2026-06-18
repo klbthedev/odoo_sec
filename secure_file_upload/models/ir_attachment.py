@@ -61,6 +61,10 @@ class IrAttachment(models.Model):
         if rate_limit_enabled:
             self._check_rate_limit(len(file_bytes))
 
+        if not ext:
+            self._audit(name, len(file_bytes), mime, "accepted", "No extension")
+            return
+        
         if allowed_ext and ext not in allowed_ext:
             self._audit(name, len(file_bytes), mime, "rejected", "Extension not allowed")
             raise ValidationError("File type not allowed.")
