@@ -136,14 +136,10 @@ class SecurityProtectedMixin(models.AbstractModel):
         if self.env.su:
             return
 
-        if self.env.user.has_group(
-            "user_security.group_security_admin"
-        ):
+        if self.env.user.has_group("user_security.group_security_admin"):
             return
 
-        raise AccessError(
-            "Only Security Administrators may modify security configuration."
-        )
+        raise AccessError("Only Security Administrators may modify security configuration.")
 
     def create(self, vals):
         self._check_security_admin()
@@ -161,9 +157,7 @@ class IrUiView(models.Model):
     _inherit = "ir.ui.view"
 
     def _check_security_admin(self):
-        if self.env.su or self.env.user.has_group(
-            "user_security.group_security_admin"
-        ):
+        if self.env.su or self.env.user.has_group("user_security.group_security_admin"):
             return
         raise AccessError("View modification denied.")
 
@@ -183,9 +177,7 @@ class IrModelFields(models.Model):
     _inherit = "ir.model.fields"
 
     def _check_security_admin(self):
-        if self.env.su or self.env.user.has_group(
-            "user_security.group_security_admin"
-        ):
+        if self.env.su or self.env.user.has_group("user_security.group_security_admin"):
             return
         raise AccessError("Field modification denied.")
 
@@ -206,9 +198,7 @@ class IrCron(models.Model):
     _inherit = "ir.cron"
 
     def _check_security_admin(self):
-        if self.env.su or self.env.user.has_group(
-            "user_security.group_security_admin"
-        ):
+        if self.env.su or self.env.user.has_group("user_security.group_security_admin"):
             return
         raise AccessError("Cron modification denied.")
 
@@ -228,9 +218,7 @@ class IrConfigParameter(models.Model):
     _inherit = "ir.config_parameter"
 
     def _check_security_admin(self):
-        if self.env.su or self.env.user.has_group(
-            "user_security.group_security_admin"
-        ):
+        if self.env.su or self.env.user.has_group("user_security.group_security_admin"):
             return
         raise AccessError("System parameter modification denied.")
 
@@ -250,9 +238,7 @@ class IrModuleModule(models.Model):
     _inherit = "ir.module.module"
 
     def _check_security_admin(self):
-        if self.env.su or self.env.user.has_group(
-            "user_security.group_security_admin"
-        ):
+        if self.env.su or self.env.user.has_group("user_security.group_security_admin") or self.env.user.has_group("base.group_system"):
             return
         raise AccessError("Module installation denied.")
 
