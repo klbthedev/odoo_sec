@@ -4,29 +4,15 @@
         <field name="model">res.users</field>
         <field name="inherit_id" ref="base.view_users_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//page[@name='access_rights']" position="attributes">
-                <attribute name="groups">user_security.group_security_admin</attribute>
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Security Admin Access" groups="base.group_system">
+                    <field name="security_protected" groups="user_security.group_security_admin"/>
+                </page>
             </xpath>
         </field>
     </record>
     <record id="rule_users_self_only" model="ir.rule">
         <field name="name">Users see only themselves</field>
-        <field name="model_id" ref="base.model_res_users"/>
-        <field name="domain_force">[('id', '=', user.id)]</field>
-        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
-    </record>
-    <record id="view_users_form_security" model="ir.ui.view">
-        <field name="name">res.users.security</field>
-        <field name="model">res.users</field>
-        <field name="inherit_id" ref="base.view_users_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//page[@name='access_rights']" position="attributes">
-                <field name="security_protected" groups="user_security.group_security_admin"/>
-            </xpath>
-        </field>
-    </record>
-    <record id="rule_user_self_only" model="ir.rule">
-        <field name="name">Users can only see themselves</field>
         <field name="model_id" ref="base.model_res_users"/>
         <field name="domain_force">[('id', '=', user.id)]</field>
         <field name="groups" eval="[(4, ref('base.group_user'))]"/>
