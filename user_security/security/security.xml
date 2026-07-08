@@ -1,5 +1,15 @@
 <odoo noupdate="1">
+
+    <!-- Grant the built-in Administrator the Security Administrator role and
+         protect the account. -->
     <record id="base.user_admin" model="res.users">
         <field name="groups_id" eval="[(4, ref('user_security.group_security_admin'))]"/>
+        <field name="security_protected" eval="True"/>
     </record>
+
+    <!-- Protect the superuser / root account. -->
+    <record id="base.user_root" model="res.users">
+        <field name="security_protected" eval="True"/>
+    </record>
+
 </odoo>

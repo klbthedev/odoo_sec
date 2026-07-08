@@ -1,3 +1,4 @@
+from . import security_mixin
 from . import res_users
 from . import res_groups
 from . import ir_model_access

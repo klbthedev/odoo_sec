@@ -1,9 +1,14 @@
 <odoo>
 
+    <!-- Dedicated role allowed to manage users, groups, ACLs, record rules and
+         other security-sensitive configuration. It implies Settings/System
+         access so a Security Administrator can reach the relevant menus, while
+         the model guards ensure a plain Settings administrator cannot alter
+         security configuration. -->
     <record id="group_security_admin" model="res.groups">
         <field name="name">Security Administrator</field>
         <field name="category_id" ref="base.module_category_administration"/>
         <field name="implied_ids" eval="[(4, ref('base.group_system'))]"/>
     </record>
-    
+
 </odoo>
