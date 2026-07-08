@@ -1,21 +1,18 @@
 <odoo>
+
     <record id="res_users_form_security" model="ir.ui.view">
         <field name="name">res.users.form.security</field>
         <field name="model">res.users</field>
         <field name="inherit_id" ref="base.view_users_form"/>
         <field name="arch" type="xml">
             <xpath expr="//sheet/notebook" position="inside">
-                <page string="Security Admin Access" groups="base.group_system">
-                    <!-- <field name="security_protected" groups="user_security.group_security_admin"/> -->
-                    <field name="security_protected" />
+                <page string="Security" groups="user_security.group_security_admin">
+                    <group>
+                        <field name="security_protected"/>
+                    </group>
                 </page>
             </xpath>
         </field>
     </record>
-    <record id="rule_users_self_only" model="ir.rule">
-        <field name="name">Users see only themselves</field>
-        <field name="model_id" ref="base.model_res_users"/>
-        <field name="domain_force">[('id', '=', user.id)]</field>
-        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
-    </record>
+
 </odoo>
